@@ -1,12 +1,19 @@
 {
-  "name": "your-project",
+  "name": "humanist-modernism",
   "version": "1.0.0",
-  "description": "Eleventy portfolio site",
+  "description": "A digital space exploring technology, art, and human experience",
+  "main": ".eleventy.js",
   "scripts": {
-    "start": "eleventy --serve",
-    "build": "eleventy"
+    "start": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-username/your-repo.git"
+  },
+  "author": "Your Name",
+  "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.0"
+    "@11ty/eleventy": "^2.0.1"
   }
 }
