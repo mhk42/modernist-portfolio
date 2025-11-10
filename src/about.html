@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology | Systematic Engineering</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'corporate-primary': '#004d9c',
+                        'corporate-dark': '#1a1a1a',
+                        'corporate-light': '#f7f7f7',
+                        'corporate-border': '#cccccc',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'Helvetica', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #ffffff; transition: opacity 0.3s ease-in-out; }
+        .header-border { border-bottom: 3px solid #004d9c; }
+        .h-section-divider { border-bottom: 1px solid #cccccc; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        .project-card, .about-section { box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+        .project-card:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.1); transform: translateY(-4px); }
+    </style>
+</head>
+<body class="font-sans text-corporate-dark">
+    <header class="header-border bg-white sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="/" class="logo-mark text-3xl font-black text-corporate-dark">MK.</a>
+            <nav class="space-x-4">
+                <a href="/" class="nav-link text-corporate-dark hover:text-corporate-primary font-semibold transition-colors">Home</a>
+                <a href="/projects/" class="nav-link text-corporate-dark hover:text-corporate-primary font-semibold transition-colors">Projects</a>
+                <a href="/about/" class="nav-link text-corporate-dark hover:text-corporate-primary font-semibold transition-colors">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 lg:px-8 py-16 min-h-[70vh]">
+        <section class="about-section max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold h-section-divider mb-8">About the Developer & Methodology</h1>
+            <p class="text-xl text-gray-700 mb-8">My work is rooted in <strong>rational decision-making</strong> and a commitment to <strong>systematic consistency</strong>. I specialize in creating robust, scalable, and enduring software systems designed to solve real-world problems with maximum efficiency.</p>
+
+            <div class="grid md:grid-cols-3 gap-8 mt-12">
+                <div class="principle">
+                    <h3 class="text-xl font-bold text-corporate-dark mb-3 border-l-4 border-corporate-primary pl-3">Longevity</h3>
+                    <p class="text-gray-600">Solutions are engineered for decades, not seasons. We prioritize timeless design and architecture over current trends.</p>
+                </div>
+                <div class="principle">
+                    <h3 class="text-xl font-bold text-corporate-dark mb-3 border-l-4 border-corporate-primary pl-3">Systematicity</h3>
+                    <p class="text-gray-600">Every component follows a defined guideline, ensuring predictable performance and comprehensive consistency at scale.</p>
+                </div>
+                <div class="principle">
+                    <h3 class="text-xl font-bold text-corporate-dark mb-3 border-l-4 border-corporate-primary pl-3">Clarity</h3>
+                    <p class="text-gray-600">Information is structured with clear hierarchy and alignment, inspiring user trust through professional polish.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-8 border-t border-corporate-border">
+                <h3 class="text-2xl font-bold text-corporate-dark mb-4">Connect</h3>
+                <p class="text-lg mb-2"><strong>GitHub:</strong> <a href="https://github.com/mhk42" target="_blank" class="text-corporate-primary hover:underline">mhk42 &rarr;</a></p>
+                <p class="text-lg"><strong>Professional Inquiry:</strong> muhammadhkhan03@gmail.com</p>
+            </div>
+        </section>
+    </main>
+
+<footer style="margin-top: 158px;" class="border-t border-corporate-border bg-corporate-light mt-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 MK. All rights reserved. Identity System Ver 1.0. | Designed for Longevity and Consistency.</p>
+    </div>
+</footer>
+</footer>
+</body>
+</html>

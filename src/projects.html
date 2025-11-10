@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalog | Systematic Engineering</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'corporate-primary': '#004d9c',
+                        'corporate-dark': '#1a1a1a',
+                        'corporate-light': '#f7f7f7',
+                        'corporate-border': '#cccccc',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'Helvetica', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #ffffff; transition: opacity 0.3s ease-in-out; }
+        .header-border { border-bottom: 3px solid #004d9c; }
+        .h-section-divider { border-bottom: 1px solid #cccccc; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        .project-card, .about-section { box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
+        .project-card:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.1); transform: translateY(-4px); }
+    </style>
+</head>
+<body class="font-sans text-corporate-dark">
+    <header class="header-border bg-white sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
+            <a href="index.html" class="logo-mark text-3xl font-black text-corporate-dark">MK.</a>
+            <nav class="space-x-4">
+                <a href="/" class="nav-link text-corporate-dark hover:text-corporate-primary font-semibold transition-colors">Home</a>
+                <a href="/projects/" class="nav-link text-corporate-dark hover:text-corporate-primary font-semibold transition-colors">Projects</a>
+                <a href="/about/" class="nav-link text-corporate-dark hover:text-corporate-primary font-semibold transition-colors">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-6 lg:px-8 py-16 min-h-[70vh]">
+        <section class="all-projects">
+            <h1 class="text-4xl font-bold h-section-divider mb-8">System & Project Catalog</h1>
+            <p class="text-lg text-gray-700 mb-10">A comprehensive listing of engineering artifacts, demonstrating systematic consistency and disciplined execution across diverse domains.</p>
+
+            <div class="space-y-8">
+                <div class="project-detail bg-white p-6 rounded-none border border-corporate-border">
+                    <h2 class="text-2xl font-bold text-corporate-primary mb-2">Medcheck</h2>
+                    <p class="text-sm font-semibold text-gray-600 mb-3">Full-Stack System, Healthcare</p>
+                    <p class="text-gray-700 mb-4">Full-stack web-based check-in system that prioritizes patients based on questionnaire responses, handling front-end, back-end, and database design. Added real-time SMS updates via TextBelt API and optimized the application with PHP and MySQL for performance and scalability.</p>
+                    <a href="https://github.com/mhk42/MedCheck" target="_blank" class="text-corporate-primary font-bold hover:underline">GitHub Repository &rarr;</a>
+                </div>
+
+                <div class="project-detail bg-white p-6 rounded-none border border-corporate-border">
+                    <h2 class="text-2xl font-bold text-corporate-primary mb-2">Fitness Web App</h2>
+                    <p class="text-sm font-semibold text-gray-600 mb-3">Web Application, Data Tracking</p>
+                    <p class="text-gray-700 mb-4">Full stack web application enabling users to log workouts, track nutrition, and access personalized fitness insights.</p>
+                    <a href="https://github.com/mhk42/fitness-webapp" target="_blank" class="text-corporate-primary font-bold hover:underline">GitHub Repository &rarr;</a>
+                </div>
+
+                <div class="project-detail bg-white p-6 rounded-none border border-corporate-border">
+                    <h2 class="text-2xl font-bold text-corporate-primary mb-2">Glowe E-Commerce</h2>
+                    <p class="text-sm font-semibold text-gray-600 mb-3">Front-End Development, Retail</p>
+                    <p class="text-gray-700 mb-4">A fully responsive, single-page e-commerce storefront for a beauty brand, Glowe Skincare, inspired by Korean Hanbang traditions. The site showcases the brand's aesthetic and products in a clean, modern layout.</p>
+                    <a href="https://github.com/mhk42/glowe-web" target="_blank" class="text-corporate-primary font-bold hover:underline">GitHub Repository &rarr;</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<footer style="margin-top: 40px;" class="border-t border-corporate-border bg-corporate-light mt-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2025 MK. All rights reserved. Identity System Ver 1.0. | Designed for Longevity and Consistency.</p>
+    </div>
+</footer>
+</body>
+</html>
