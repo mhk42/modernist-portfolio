@@ -1,5 +1,9 @@
 # Muhammad Khan Portfolio
 
+## Live Site
+You can view the portfolio live here:  
+[MK Portfolio Live](https://mhk42.github.io/modernist-portfolio/)
+
 ## About the Style
 This portfolio is designed in the **Corporate Modernism** style, which emphasizes clean, structured layouts and professional aesthetics. Key principles include:
 
@@ -24,9 +28,5 @@ Corporate Modernism communicates clarity, reliability, and scalability—qualiti
 - **Tailwind CSS**: Utility-first framework enabling rapid and consistent styling
 
 ---
-
-## Live Site
-You can view the portfolio live here:  
-[MK Portfolio Live](https://mhk42.github.io/modernist-portfolio/)
 
 
