@@ -1,4 +1,4 @@
-# MK Portfolio: Systematic Engineering Identity
+# Muhammad Khan Portfolio
 
 ## About the Style
 This portfolio is designed in the **Corporate Modernism** style, which emphasizes clean, structured layouts and professional aesthetics. Key principles include:
@@ -29,15 +29,4 @@ Corporate Modernism communicates clarity, reliability, and scalability—qualiti
 You can view the portfolio live here:  
 [MK Portfolio Live](https://mhk42.github.io/modernist-portfolio/)
 
----
 
-## Source Code
-The full project source code is available on GitHub:  
-[MK Portfolio GitHub Repository](https://github.com/mhk42/modernist-portfolio)
-
----
-
-## Credits & Inspiration
-- **Corporate Modernism Examples**: IBM, Adobe, Deloitte  
-- **Design Inspiration & Layout Patterns**: webstacks.com, framerbite.com  
-- **CSS Framework**: [Tailwind CSS](https://tailwindcss.com)
