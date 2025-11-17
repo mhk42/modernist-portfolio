@@ -4,78 +4,151 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Methodology | Systematic Engineering</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        'corporate-primary': '#004d9c',
-                        'corporate-dark': '#1a1a1a',
-                        'corporate-light': '#f7f7f7',
-                        'corporate-border': '#cccccc',
+                        'corporate-primary': '#0056b3',
+                        'corporate-dark': '#121212',
+                        'corporate-light': '#f0f2f5', 
+                        'corporate-border': '#e0e0e0',
+                        'corporate-accent': '#007bff',
                     },
                     fontFamily: {
                         sans: ['Inter', 'Arial', 'Helvetica', 'sans-serif'],
                     },
+                    boxShadow: {
+                        'modern': '0 4px 12px rgba(0, 0, 0, 0.08)',
+                        'modern-hover': '0 8px 20px rgba(0, 0, 0, 0.12)',
+                    }
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #ffffff; transition: opacity 0.3s ease-in-out; }
-        .header-border { border-bottom: 3px solid #004d9c; }
-        .h-section-divider { border-bottom: 1px solid #cccccc; padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-        .project-card, .about-section { box-shadow: 0 1px 3px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; }
-        .project-card:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.1); transform: translateY(-4px); }
+        body { 
+            background-color: #f0f2f5; 
+            transition: background-color 0.3s ease-in-out; 
+            opacity: 0; 
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header-border { border-bottom: 3px solid #0056b3; }
+        .h-section-divider { 
+            border-bottom: 1px solid #e0e0e0; 
+            padding-bottom: 1rem; 
+            margin-bottom: 2.5rem;
+        }
+
+        /* Nav link animation */
+        .nav-link {
+            position: relative;
+            display: inline-block;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #007bff; 
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        /* Principle card styling (similar to project cards) */
+        .principle-card {
+            box-shadow: var(--tw-shadow-modern);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 0.75rem; /* Consistent rounded corners */
+            background-color: #ffffff; /* White card background */
+            border: 1px solid #f0f2f5;
+        }
+        .principle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--tw-shadow-modern-hover);
+            border-color: #d0d0d0;
+        }
     </style>
 </head>
 <body class="font-sans text-corporate-dark">
     <header class="header-border bg-white sticky top-0 z-10">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="/modernist-portfolio/" class="logo-mark text-3xl font-black text-corporate-dark">MK.</a>
-            <nav class="space-x-4">
-                <a href="/modernist-portfolio/" class="nav-link text-corporate-dark hover:text-corporate-primary font-semibold transition-colors">Home</a>
-                <a href="/modernist-portfolio/projects/" class="nav-link text-corporate-dark hover:text-corporate-primary font-semibold transition-colors">Projects</a>
-                <a href="/modernist-portfolio/about/" class="nav-link text-corporate-dark hover:text-corporate-primary font-semibold transition-colors">About</a>
+            <a href="/modernist-portfolio/" class="logo-mark text-4xl font-extrabold text-corporate-dark tracking-tight">MK.</a>
+            <nav class="space-x-6">
+                <a href="/modernist-portfolio/" class="nav-link text-corporate-dark hover:text-corporate-accent font-semibold transition-colors duration-200">Home</a>
+                <a href="/modernist-portfolio/projects/" class="nav-link text-corporate-dark hover:text-corporate-accent font-semibold transition-colors duration-200">Projects</a>
+                <a href="/modernist-portfolio/about/" class="nav-link text-corporate-dark hover:text-corporate-accent font-semibold transition-colors duration-200">About</a>
             </nav>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 lg:px-8 py-16 min-h-[70vh]">
-        <section class="about-section max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold h-section-divider mb-8">About the Developer & Methodology</h1>
-            <p class="text-xl text-gray-700 mb-8">My work is rooted in <strong>rational decision-making</strong> and a commitment to <strong>systematic consistency</strong>. I specialize in creating robust, scalable, and enduring software systems designed to solve real-world problems with maximum efficiency.</p>
+    <main class="max-w-7xl mx-auto px-6 lg:px-8 py-20 min-h-[70vh]">
+        <section class="about-section">
+            <h1 class="text-5xl font-extrabold h-section-divider text-corporate-dark mb-6 leading-tight">Modernist Corporate Style & Philosophy</h1>
+            <p class="text-xl text-gray-700 max-w-4xl mb-16 leading-relaxed">The Modernist Corporate style is rooted in rational decision-making and a commitment to systematic consistency, creating robust, scalable, and enduring systems designed to solve problems with maximum efficiency.</p>
 
-            <div class="grid md:grid-cols-3 gap-8 mt-12">
-                <div class="principle">
-                    <h3 class="text-xl font-bold text-corporate-dark mb-3 border-l-4 border-corporate-primary pl-3">Longevity</h3>
-                    <p class="text-gray-600">Solutions are engineered for decades, not seasons. We prioritize timeless design and architecture over current trends.</p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="principle-card p-8">
+                    <h3 class="text-2xl font-bold text-corporate-primary mb-3 flex items-center">
+                        <svg class="h-6 w-6 text-corporate-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.01 12.01 0 003 12c0 2.755 1.137 5.286 2.944 7.118L12 21.056l6.056-1.938A12.01 12.01 0 0021 12c0-2.755-1.137-5.286-2.944-7.118z" />
+                        </svg>
+                        Form Follows Function
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">Eliminating ornamentation to focus on the essential purpose and utility of every element, ensuring design serves usability first. This aligns with the systematic goal of maximizing efficiency.</p>
                 </div>
-                <div class="principle">
-                    <h3 class="text-xl font-bold text-corporate-dark mb-3 border-l-4 border-corporate-primary pl-3">Systematicity</h3>
-                    <p class="text-gray-600">Every component follows a defined guideline, ensuring predictable performance and comprehensive consistency at scale.</p>
+                
+                <div class="principle-card p-8">
+                    <h3 class="text-2xl font-bold text-corporate-primary mb-3 flex items-center">
+                        <svg class="h-6 w-6 text-corporate-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                        </svg>
+                        Grid Systems
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">The meticulous use of an underlying grid to organize content, ensuring proportional consistency, balance, and a clear visual hierarchy across all components and pages.</p>
                 </div>
-                <div class="principle">
-                    <h3 class="text-xl font-bold text-corporate-dark mb-3 border-l-4 border-corporate-primary pl-3">Clarity</h3>
-                    <p class="text-gray-600">Information is structured with clear hierarchy and alignment, inspiring user trust through professional polish.</p>
+
+                <div class="principle-card p-8">
+                    <h3 class="text-2xl font-bold text-corporate-primary mb-3 flex items-center">
+                        <svg class="h-6 w-6 text-corporate-primary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h10M7 16h10M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4l2 2h4l2-2h4a2 2 0 012 2v14a2 2 0 01-2 2h-5m-9 0h9" />
+                        </svg>
+                        Clarity & Legibility
+                    </h3>
+                    <p class="text-gray-700 leading-relaxed">Prioritizing sans-serif typography, ample white space, and a limited functional color palette to maximize readability and reduce user cognitive load.</p>
                 </div>
             </div>
 
-            <div class="mt-12 pt-8 border-t border-corporate-border">
-                <h3 class="text-2xl font-bold text-corporate-dark mb-4">Connect</h3>
-                <p class="text-lg mb-2"><strong>GitHub:</strong> <a href="https://github.com/mhk42" target="_blank" class="text-corporate-primary hover:underline">mhk42 &rarr;</a></p>
-                <p class="text-lg"><strong>Professional Inquiry:</strong> muhammadhkhan03@gmail.com</p>
+            <div class="mt-20 pt-10 border-t border-corporate-border">
+                <h3 class="text-3xl font-bold text-corporate-dark mb-6 flex items-center">
+                    <svg class="h-8 w-8 text-corporate-primary mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                    History of the Style 
+                </h3>
+                <p class="text-lg text-gray-700 mb-5 leading-relaxed">The Modernist Corporate aesthetic traces its roots to the early to mid-20th-century Modernism movement, particularly influential European design schools like the Bauhaus in Germany and the Swiss-born International Typographic Style (or Swiss Style).</p>
+                <p class="text-lg text-gray-700 mb-5 leading-relaxed">Driven by a post-World War I desire for a cleaner, more rational society, pioneers like Jan Tschichold and the designers of the Bauhaus rejected the ornate decoration of the past in favor of simplicity, clarity, and functionality (*"form follows function"*). This philosophy, based on geometric shapes, sans-serif fonts (like Helvetica), and asymmetrical grid layouts, provided a universal visual language that transcended culture.</p>
+                <p class="text-lg text-gray-700 leading-relaxed">In the post-WWII era, this clear, systematic approach was adopted by major corporations—often referred to as the International Corporate Style—to create cohesive, recognizable brand identities across international markets. This history explains the style's enduring features: geometric layouts, a restricted and functional color palette, and a focus on content hierarchy.</p>
             </div>
         </section>
     </main>
 
-<footer style="margin-top: 158px;" class="border-t border-corporate-border bg-corporate-light mt-12">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 text-center text-gray-500 text-sm">
+<footer class="border-t border-corporate-border bg-corporate-light mt-24 py-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center text-gray-500 text-sm">
         <p>&copy; 2025 MK. All rights reserved. Identity System Ver 1.0. | Designed for Longevity and Consistency.</p>
     </div>
-</footer>
 </footer>
 </body>
 </html>
