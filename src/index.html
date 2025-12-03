@@ -11,122 +11,149 @@
             theme: {
                 extend: {
                     colors: {
-                        'corporate-primary': '#0056b3', /* Primary Blue - Stronger, less muted */
-                        'corporate-dark': '#121212', /* Darker Text/Element */
-                        'corporate-light': '#f0f2f5', /* Soft Gray Background */
-                        'corporate-border': '#e0e0e0', /* Subtle Border */
-                        'corporate-accent': '#007bff', /* For dynamic elements */
+                        'corporate-primary': '#0056b3', // Deep Blue
+                        'corporate-dark': '#1c1c1c', // Near Black for stark contrast
+                        'corporate-light': '#f8f9fa', // Lighter background for more contrast
+                        'corporate-border': '#e9ecef', // Very light grey border
+                        'corporate-accent': '#007bff', // Bright blue for interaction
+                        'corporate-secondary': '#6c757d', // Muted grey for supporting text
                     },
                     fontFamily: {
                         sans: ['Inter', 'Arial', 'Helvetica', 'sans-serif'],
                     },
                     boxShadow: {
-                        'modern': '0 4px 12px rgba(0, 0, 0, 0.08)',
-                        'modern-hover': '0 8px 20px rgba(0, 0, 0, 0.12)',
+                        // Subtle, modern shadow for elevation
+                        'modern': '0 2px 8px rgba(0, 0, 0, 0.05)',
+                        'modern-hover': '0 8px 24px rgba(0, 0, 0, 0.1)',
+                        'accent-focus': '0 0 0 3px rgba(0, 123, 255, 0.25)', 
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Custom Styles for Modern Feel */
-        body {
-            background-color: #f0f2f5;
-            transition: background-color 0.3s ease-in-out;
-            opacity: 0; /* Hidden by default for fade-in */
-            animation: fadeIn 0.8s ease-out forwards;
+        /* Base page animation */
+        body { 
+            background-color: #f8f9fa; /* Lighter background */
+            opacity: 0; 
+            animation: fadeIn 0.6s ease-out forwards;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .header-border {
-            border-bottom: 3px solid #0056b3;
+        /* Fixed Header Styles and Scroll Effect */
+        .fixed-header {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .scrolled-header {
+            background-color: rgba(255, 255, 255, 0.95); /* Slight transparency */
+            backdrop-filter: blur(5px);
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
         }
 
-        /* Nav link animation (Dynamic Underline) */
+        /* Nav link animation - more pronounced underline */
         .nav-link {
             position: relative;
             display: inline-block;
+            padding-bottom: 0.25rem; /* Add space for underline */
         }
         .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
-            display: block;
-            margin-top: 5px;
-            right: 0;
-            background: #007bff;
-            transition: width 0.3s ease;
+            bottom: 0;
+            left: 50%; /* Start in the middle */
+            transform: translateX(-50%);
+            background: #007bff; 
+            transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother animation curve */
         }
-        .nav-link:hover::after {
+        .nav-link:hover::after,
+        .nav-link.active::after {
             width: 100%;
-            left: 0;
         }
 
-        /* Project Card Animation */
+        /* Project Card Animation (Consistent with Principle Card) */
         .project-card {
             box-shadow: var(--tw-shadow-modern);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 0.75rem; /* Rounded corners */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            border-radius: 0.5rem; /* Consistent rounded corners */
             background-color: #ffffff; /* White card background */
-            border: 1px solid #f0f2f5;
+            border: 1px solid var(--tw-border-corporate-border);
         }
         .project-card:hover {
             box-shadow: var(--tw-shadow-modern-hover);
-            transform: translateY(-5px); /* Lift effect */
-            border-color: #d0d0d0;
+            transform: translateY(-4px); /* Smaller lift */
+            border-color: #0056b3; /* Primary color border on hover */
         }
 
+        /* Consistent Section Divider */
         .h-section-divider {
-            border-bottom: 1px solid #e0e0e0;
+            border-bottom: 1px solid var(--tw-border-corporate-border);
             padding-bottom: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
-        /* Hero Button Animation */
+        /* Primary Button Style (Consistent) */
         .btn-primary {
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 86, 179, 0.2);
-            border-radius: 0.5rem;
+            border-radius: 0.25rem; /* Sharper corners for modern look */
         }
         .btn-primary:hover {
             transform: translateY(-1px);
             box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
+            background-color: #004494; /* Slightly darker primary on hover */
         }
 
     </style>
+    <script>
+        // JS for sticky header effect (Replicating Methodology page logic)
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled-header');
+                } else {
+                    header.classList.remove('scrolled-header');
+                }
+            });
+        });
+    </script>
 </head>
 <body class="font-sans text-corporate-dark">
 
-    <header class="header-border bg-white sticky top-0 z-10">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="/modernist-portfolio/" class="logo-mark text-4xl font-extrabold text-corporate-dark tracking-tight">MK.</a>
+    <header id="header" class="fixed-header bg-white fixed top-0 w-full z-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex justify-between items-center">
+            <a href="/modernist-portfolio/" class="logo-mark text-3xl font-extrabold text-corporate-primary tracking-tighter">MK.</a>
 
-            <nav class="space-x-6">
-                <a href="/modernist-portfolio/" class="nav-link text-corporate-dark hover:text-corporate-accent font-semibold transition-colors duration-200">Home</a>
-                <a href="/modernist-portfolio/projects/" class="nav-link text-corporate-dark hover:text-corporate-accent font-semibold transition-colors duration-200">Projects</a>
-                <a href="/modernist-portfolio/about/" class="nav-link text-corporate-dark hover:text-corporate-accent font-semibold transition-colors duration-200">About</a>
+            <nav class="space-x-8">
+                <a href="/modernist-portfolio/" class="nav-link text-corporate-dark hover:text-corporate-accent font-medium transition-colors duration-200 active">Home</a>
+                <a href="/modernist-portfolio/projects/" class="nav-link text-corporate-dark hover:text-corporate-accent font-medium transition-colors duration-200">Projects</a>
+                <a href="/modernist-portfolio/about/" class="nav-link text-corporate-dark hover:text-corporate-accent font-medium transition-colors duration-200">Methodology</a>
             </nav>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 lg:px-8 py-20 min-h-[70vh]">
-        <section class="hero-section pb-20">
-            <h1 class="hero-title text-corporate-dark font-extrabold text-6xl md:text-8xl mb-6 leading-none">
-                <span class="text-corporate-primary">Systematic</span> <br class="hidden sm:inline"/> Design & Engineering.
-            </h1>
-            <p class="text-2xl text-gray-700 max-w-3xl mb-10 leading-relaxed">
-                Applying rational, systematic thinking to develop robust, scalable, and enduring solutions that prioritize function and clarity above all.
-            </p>
-            <a href="/modernist-portfolio/projects/" class="btn-primary inline-flex items-center bg-corporate-primary text-white py-3 px-8 font-bold uppercase text-base tracking-widest hover:bg-corporate-dark transition-colors border-2 border-corporate-primary">
-                View Complete System
-                <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-            </a>
+    <main class="max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-20 min-h-[70vh]">
+        <section class="hero-section pb-32 grid lg:grid-cols-12 gap-10">
+            <div class="lg:col-span-12">
+                <h1 class="hero-title text-corporate-dark font-extrabold text-6xl md:text-7xl mb-6 leading-tight">
+                    <span class="text-corporate-primary">Systematic</span> <br/> Design & Engineering.
+                </h1>
+                <p class="text-xl text-corporate-secondary max-w-3xl mb-10 leading-relaxed">
+                    Applying rational, systematic thinking to develop robust, scalable, and enduring solutions that prioritize function and clarity above all.
+                </p>
+                <a href="/modernist-portfolio/projects/" class="btn-primary inline-flex items-center bg-corporate-primary text-white py-3 px-8 font-bold uppercase text-sm tracking-widest hover:bg-corporate-dark transition-colors border-2 border-corporate-primary">
+                    View Complete System
+                    <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
         </section>
 
         <section class="featured-projects mt-16">
@@ -135,24 +162,28 @@
                 <div class="project-card p-8">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-2xl font-bold text-corporate-primary">Medcheck</h3>
-                        <span class="text-xs font-semibold text-white bg-corporate-accent px-4 py-1 rounded-full uppercase tracking-wider">Full-Stack</span>
+                        <span class="text-xs font-semibold text-white bg-corporate-accent px-3 py-1 rounded-full uppercase tracking-wider">Full-Stack</span>
                     </div>
-                    <p class="text-gray-700 mb-6 leading-relaxed">Full-stack web-based check-in system that prioritizes patients based on questionnaire responses, handling front-end, back-end, and database design.</p>
-                    <a href="https://github.com/mhk42/MedCheck" target="_blank" class="text-corporate-accent font-bold hover:text-corporate-primary transition-colors flex items-center group">
+                    <p class="text-corporate-secondary mb-6 leading-relaxed">Full-stack web-based check-in system that prioritizes patients based on questionnaire responses, handling front-end, back-end, and database design. Implements strict data flow protocols.</p>
+                    <a href="https://github.com/mhk42/MedCheck" target="_blank" class="text-corporate-accent font-medium hover:text-corporate-primary transition-colors flex items-center group">
                         View Documentation
-                        <span class="ml-1 text-lg transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                        <svg class="ml-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
                     </a>
                 </div>
 
                 <div class="project-card p-8">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="text-2xl font-bold text-corporate-primary">Fitness Web App</h3>
-                        <span class="text-xs font-semibold text-white bg-corporate-accent px-4 py-1 rounded-full uppercase tracking-wider">Web Application</span>
+                        <span class="text-xs font-semibold text-white bg-corporate-accent px-3 py-1 rounded-full uppercase tracking-wider">Web Application</span>
                     </div>
-                    <p class="text-gray-700 mb-6 leading-relaxed">Full stack web application enabling users to log workouts, track nutrition, and access personalized fitness insights. Utilizes robust component architecture.</p>
-                    <a href="https://github.com/mhk42/fitness-webapp" target="_blank" class="text-corporate-accent font-bold hover:text-corporate-primary transition-colors flex items-center group">
+                    <p class="text-corporate-secondary mb-6 leading-relaxed">Full stack web application enabling users to log workouts, track nutrition, and access personalized fitness insights. Utilizes robust component architecture and modular design.</p>
+                    <a href="https://github.com/mhk42/fitness-webapp" target="_blank" class="text-corporate-accent font-medium hover:text-corporate-primary transition-colors flex items-center group">
                         View Documentation
-                        <span class="ml-1 text-lg transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
+                        <svg class="ml-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
                     </a>
                 </div>
             </div>
@@ -160,8 +191,8 @@
     </main>
 
     <footer class="border-t border-corporate-border bg-corporate-light mt-24 py-8">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 MK. All rights reserved. Identity System Ver 1.0. | Designed for Longevity and Consistency.</p>
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center text-corporate-secondary text-sm">
+            <p>&copy; 2025 MK. All rights reserved. Identity System Ver 2.0. | Engineered for <span class="text-corporate-primary font-medium">Longevity and Consistency</span>.</p>
         </div>
     </footer>
 </body>
