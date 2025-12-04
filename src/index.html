@@ -3,197 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MK Portfolio: Systematic Engineering Identity</title>
+    <title>Corporate Modernism: The Aesthetic of Structure</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for the "Inter" font and dark mode support -->
     <script>
-        // --- Tailwind Configuration for Modern Corporate Colors/Fonts ---
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        'corporate-primary': '#0056b3', // Deep Blue
-                        'corporate-dark': '#1c1c1c', // Near Black for stark contrast
-                        'corporate-light': '#f8f9fa', // Lighter background for more contrast
-                        'corporate-border': '#e9ecef', // Very light grey border
-                        'corporate-accent': '#007bff', // Bright blue for interaction
-                        'corporate-secondary': '#6c757d', // Muted grey for supporting text
-                    },
                     fontFamily: {
-                        sans: ['Inter', 'Arial', 'Helvetica', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                     },
-                    boxShadow: {
-                        // Subtle, modern shadow for elevation
-                        'modern': '0 2px 8px rgba(0, 0, 0, 0.05)',
-                        'modern-hover': '0 8px 24px rgba(0, 0, 0, 0.1)',
-                        'accent-focus': '0 0 0 3px rgba(0, 123, 255, 0.25)', 
+                    colors: {
+                        'cm-dark': '#1c1c1e', // Near black for depth
+                        'cm-light': '#f5f5f7', // Apple-like off-white
+                        'cm-gray': '#8e8e93', // Subtle text/icon color
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Base page animation */
-        body { 
-            background-color: #f8f9fa; /* Lighter background */
-            opacity: 0; 
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Apply a global font smoothing for a cleaner look */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
         }
 
-        /* Fixed Header Styles and Scroll Effect */
-        .fixed-header {
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        /* Custom styling for the stark, modernist image holders */
+        .image-placeholder {
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 600;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        .scrolled-header {
-            background-color: rgba(255, 255, 255, 0.95); /* Slight transparency */
-            backdrop-filter: blur(5px);
-            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Nav link animation - more pronounced underline */
-        .nav-link {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.25rem; /* Add space for underline */
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 50%; /* Start in the middle */
-            transform: translateX(-50%);
-            background: #007bff; 
-            transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother animation curve */
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        /* Project Card Animation (Consistent with Principle Card) */
-        .project-card {
-            box-shadow: var(--tw-shadow-modern);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-            border-radius: 0.5rem; /* Consistent rounded corners */
-            background-color: #ffffff; /* White card background */
-            border: 1px solid var(--tw-border-corporate-border);
-        }
-        .project-card:hover {
-            box-shadow: var(--tw-shadow-modern-hover);
-            transform: translateY(-4px); /* Smaller lift */
-            border-color: #0056b3; /* Primary color border on hover */
-        }
-
-        /* Consistent Section Divider */
-        .h-section-divider {
-            border-bottom: 1px solid var(--tw-border-corporate-border);
-            padding-bottom: 1rem;
-            margin-bottom: 2.5rem;
-        }
-
-        /* Primary Button Style (Consistent) */
-        .btn-primary {
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 86, 179, 0.2);
-            border-radius: 0.25rem; /* Sharper corners for modern look */
-        }
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 86, 179, 0.3);
-            background-color: #004494; /* Slightly darker primary on hover */
-        }
-
     </style>
-    <script>
-        // JS for sticky header effect (Replicating Methodology page logic)
-        document.addEventListener('DOMContentLoaded', () => {
-            const header = document.getElementById('header');
-            
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled-header');
-                } else {
-                    header.classList.remove('scrolled-header');
-                }
-            });
-        });
-    </script>
 </head>
-<body class="font-sans text-corporate-dark">
+<body class="bg-white text-cm-dark">
 
-    <header id="header" class="fixed-header bg-white fixed top-0 w-full z-20">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-5 flex justify-between items-center">
-            <a href="/modernist-portfolio/" class="logo-mark text-3xl font-extrabold text-corporate-primary tracking-tighter">MK.</a>
-
-            <nav class="space-x-8">
-                <a href="/modernist-portfolio/" class="nav-link text-corporate-dark hover:text-corporate-accent font-medium transition-colors duration-200 active">Home</a>
-                <a href="/modernist-portfolio/projects/" class="nav-link text-corporate-dark hover:text-corporate-accent font-medium transition-colors duration-200">Projects</a>
-                <a href="/modernist-portfolio/about/" class="nav-link text-corporate-dark hover:text-corporate-accent font-medium transition-colors duration-200">Methodology</a>
-            </nav>
+    <!-- Sticky Navigation Bar (Apple-style minimalism) -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-14">
+                <a href="#hero" class="text-xl font-bold tracking-tight">Corporate Modernism</a>
+                <div class="flex space-x-6 text-sm text-cm-gray">
+                    <a href="#what" class="hover:text-cm-dark transition-colors hidden sm:block">What</a>
+                    <a href="#origins" class="hover:text-cm-dark transition-colors hidden sm:block">Origins</a>
+                    <a href="#examples" class="hover:text-cm-dark transition-colors hidden sm:block">Examples</a>
+                    <a href="#explore" class="hover:text-cm-dark transition-colors">Explore</a>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <main class="max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-20 min-h-[70vh]">
-        <section class="hero-section pb-32 grid lg:grid-cols-12 gap-10">
-            <div class="lg:col-span-12">
-                <h1 class="hero-title text-corporate-dark font-extrabold text-6xl md:text-7xl mb-6 leading-tight">
-                    <span class="text-corporate-primary">Systematic</span> <br/> Design & Engineering.
-                </h1>
-                <p class="text-xl text-corporate-secondary max-w-3xl mb-10 leading-relaxed">
-                    Applying rational, systematic thinking to develop robust, scalable, and enduring solutions that prioritize function and clarity above all.
-                </p>
-                <a href="/modernist-portfolio/projects/" class="btn-primary inline-flex items-center bg-corporate-primary text-white py-3 px-8 font-bold uppercase text-sm tracking-widest hover:bg-corporate-dark transition-colors border-2 border-corporate-primary">
-                    View Complete System
-                    <svg class="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+    <main>
+        <!-- 1. Hero Section -->
+        <section id="hero" class="h-[80vh] flex flex-col justify-center items-center bg-cm-light pt-14 pb-10 px-4">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tighter text-center mb-4 leading-tight">
+                The Geometry of Power.
+            </h1>
+            <p class="text-xl md:text-3xl font-light text-center max-w-3xl text-cm-dark/70">
+                Corporate Modernism defined the mid-century skyline—a sleek, rational, and profoundly influential aesthetic built on logic, efficiency, and glass.
+            </p>
+            <!-- Adjust mt-12 to control button vertical position (mt-8, mt-10, mt-12, mt-16, etc.) -->
+            <div class="mt-12">
+                <a href="#what" class="px-6 py-3 bg-cm-dark text-white text-lg font-semibold rounded-full hover:bg-cm-gray transition-colors shadow-lg">
+                    Discover the Style
                 </a>
             </div>
         </section>
 
-        <section class="featured-projects mt-16">
-            <h2 class="text-4xl font-bold h-section-divider text-corporate-dark">Featured Systems</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="project-card p-8">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-corporate-primary">Medcheck</h3>
-                        <span class="text-xs font-semibold text-white bg-corporate-accent px-3 py-1 rounded-full uppercase tracking-wider">Full-Stack</span>
-                    </div>
-                    <p class="text-corporate-secondary mb-6 leading-relaxed">Full-stack web-based check-in system that prioritizes patients based on questionnaire responses, handling front-end, back-end, and database design. Implements strict data flow protocols.</p>
-                    <a href="https://github.com/mhk42/MedCheck" target="_blank" class="text-corporate-accent font-medium hover:text-corporate-primary transition-colors flex items-center group">
-                        View Documentation
-                        <svg class="ml-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </a>
-                </div>
+        <!-- 2. What is Corporate Modernism? (Darker Section) -->
+        <section id="what" class="py-20 md:py-32 bg-cm-dark text-white px-4">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-center">
+                    What is the Style?
+                </h2>
+                <p class="text-lg md:text-xl font-light text-center max-w-4xl mx-auto mb-16 text-cm-gray">
+                    It is an architectural doctrine where form is dictated by function, resulting in clean lines, unadorned surfaces, and an emphasis on industrial materials. It was the visual signature of the post-war corporate boom.
+                </p>
 
-                <div class="project-card p-8">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-2xl font-bold text-corporate-primary">Fitness Web App</h3>
-                        <span class="text-xs font-semibold text-white bg-corporate-accent px-3 py-1 rounded-full uppercase tracking-wider">Web Application</span>
-                    </div>
-                    <p class="text-corporate-secondary mb-6 leading-relaxed">Full stack web application enabling users to log workouts, track nutrition, and access personalized fitness insights. Utilizes robust component architecture and modular design.</p>
-                    <a href="https://github.com/mhk42/fitness-webapp" target="_blank" class="text-corporate-accent font-medium hover:text-corporate-primary transition-colors flex items-center group">
-                        View Documentation
-                        <svg class="ml-1 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                <div class="grid md:grid-cols-3 gap-10">
+                    <div class="p-6 bg-white/10 rounded-xl">
+                        <svg class="w-10 h-10 text-white mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <title>Simplicity</title>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                         </svg>
-                    </a>
+                        <h3 class="text-2xl font-semibold mb-2">Simplicity</h3>
+                        <p class="text-cm-gray">Rejection of ornamentation. Buildings are simplified to their essential, geometric forms—rectangles and cubes dominate.</p>
+                    </div>
+                    <div class="p-6 bg-white/10 rounded-xl">
+                        <svg class="w-10 h-10 text-white mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <title>Structure</title>
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M3 9h18M9 3v18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <h3 class="text-2xl font-semibold mb-2">Structure</h3>
+                        <p class="text-cm-gray">The internal structure is often visible externally, emphasizing steel frames and the grid system of the facade.</p>
+                    </div>
+                    <div class="p-6 bg-white/10 rounded-xl">
+                        <svg class="w-10 h-10 text-white mb-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <title>Materials</title>
+                            <rect x="2" y="7" width="20" height="3" rx="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <rect x="4" y="12" width="16" height="3" rx="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <rect x="6" y="17" width="12" height="3" rx="1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <h3 class="text-2xl font-semibold mb-2">Materials</h3>
+                        <p class="text-cm-gray">Preference for industrial, machine-made materials: glass, steel, and reinforced concrete, often appearing polished and slick.</p>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- 3. Origins & Pioneers (Light Section with image focus) -->
+        <section id="origins" class="py-20 md:py-32 bg-white px-4">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                            The European Roots
+                        </h2>
+                        <p class="text-lg text-cm-dark/80 mb-6">
+                            Corporate Modernism didn't start in Midtown Manhattan; its philosophical foundations were laid in post-WWI Europe, specifically with the Bauhaus school and the International Style.
+                        </p>
+                        <ul class="space-y-4 text-md text-cm-dark/70">
+                            <li><span class="font-semibold text-cm-dark">Bauhaus Influence:</span> Walter Gropius and the concept of Gesamtkunstwerk (total work of art), integrating design, craft, and mass production.</li>
+                            <li><span class="font-semibold text-cm-dark">Mies van der Rohe:</span> "Less is More." His work—especially the steel and glass skyscrapers—became the definitive template for the corporate tower.</li>
+                            <li><span class="font-semibold text-cm-dark">Post-War Adoption:</span> As European architects emigrated to the U.S., their rationalist ideals perfectly aligned with the needs and budgets of rapidly expanding American corporations.</li>
+                        </ul>
+                    </div>
+                    <!-- Image: Mies van der Rohe / Seagram Building Style -->
+                    <img src="./images/grid.jpg" alt="Glass and Steel Grid Architecture" class="w-full h-auto rounded-lg shadow-lg">
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. The Impact Section (Full Width, Striking Statement) -->
+        <section class="py-24 bg-cm-light text-cm-dark text-center px-4">
+            <h2 class="text-3xl md:text-5xl font-light italic max-w-4xl mx-auto leading-snug">
+                "Architecture must subordinate itself to the needs of the corporation. It must be rational, repeatable, and universally understood."
+            </h2>
+            <p class="mt-4 text-xl font-medium text-cm-gray">- The Modernist Mandate</p>
+        </section>
+
+        <!-- 5. Iconic Examples (Grid Layout) -->
+        <section id="examples" class="py-20 md:py-32 bg-white px-4">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">
+                    Iconic Corporate Signatures
+                </h2>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Example 1 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+                        <img src="./images/building.png" alt="Seagram Building" class="w-full h-[30vh] object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-1">Seagram Building (1958)</h3>
+                            <p class="text-sm font-medium text-cm-gray">New York City, Mies van der Rohe</p>
+                            <p class="mt-3 text-cm-dark/80 text-sm">Perhaps the most refined example. The bronze and dark glass facade established the high-end corporate aesthetic for decades.</p>
+                        </div>
+                    </div>
+
+                    <!-- Example 2 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+                        <img src="./images/building2.jpg" alt="Lever House" class="w-full h-[30vh] object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-1">Lever House (1952)</h3>
+                            <p class="text-sm font-medium text-cm-gray">New York City, Skidmore, Owings & Merrill (SOM)</p>
+                            <p class="mt-3 text-cm-dark/80 text-sm">Pioneered the glass curtain wall and an innovative public plaza at ground level, separating the corporate tower from the street.</p>
+                        </div>
+                    </div>
+
+                    <!-- Example 3 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-100">
+                        <img src="./images/building3.jpg" alt="IBM Building" class="w-full h-[30vh] object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-1">IBM Campuses</h3>
+                            <p class="text-sm font-medium text-cm-gray">Various Locations, Eero Saarinen/Marcel Breuer</p>
+                            <p class="mt-3 text-cm-dark/80 text-sm">Showcased how the style could be adapted from skyscrapers to suburban, low-rise campuses, maintaining geometric precision.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Call to Action / Footer -->
+        <section id="explore" class="py-16 md:py-24 bg-cm-dark text-white text-center px-4">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-4">
+                Explore the Legacy
+            </h2>
+            <p class="text-lg max-w-2xl mx-auto mb-8 text-cm-gray">
+                Though often replaced by postmodern and high-tech styles, the principles of Corporate Modernism continue to influence current design and technology aesthetics globally.
+            </p>
+            <p class="mt-8 text-xs text-cm-gray/50">
+                &copy; 2025 Corporate Modernism Archive. Design inspired by Rationalist Principles.
+            </p>
+        </section>
+
     </main>
 
-    <footer class="border-t border-corporate-border bg-corporate-light mt-24 py-8">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center text-corporate-secondary text-sm">
-            <p>&copy; 2025 MK. All rights reserved. Identity System Ver 2.0. | Engineered for <span class="text-corporate-primary font-medium">Longevity and Consistency</span>.</p>
-        </div>
-    </footer>
 </body>
 </html>
